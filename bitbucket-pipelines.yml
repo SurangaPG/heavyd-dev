@@ -6,7 +6,7 @@ pipelines:
     master:
       - step:
           # The initial test step will simply check or the components still pass all their unit tests. Since these
-          # Are used by all the other items in the workflow tool.
+          # Are used by all the other items in the heavyd tool.
           name: Validating "components" package
           caches:
             - composer
