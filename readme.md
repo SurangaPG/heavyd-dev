@@ -1,6 +1,6 @@
-# Workflow - Dev suite
+# HeavyD - Dev suite
 
-Contains a single point to develop all the different workflow items.
+Contains a single point to develop all the different heavyd packages.
 Ensuring easy access to all the components and ensuring that every 
 change validates the new functionality vs all the different items.
 
@@ -20,7 +20,7 @@ as a dependency.
 
 ### Global
 The global CLI application that can be added to a local dev's 
-environment to make it easier to detect various workflow commands etc. 
+environment to make it easier to detect various heavyd commands etc. 
 
 ### Seeder
 The seeder that assembles new projects based on a configuration file
