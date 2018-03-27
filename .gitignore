@@ -1,0 +1,8 @@
+# Ignore vendor files.
+vendor
+
+# Ignore builds generated during test cycles.
+/build
+
+# Ignore local properties
+build.test.properties.local

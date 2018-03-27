@@ -1,0 +1,21 @@
+image: php:7.1-cli
+clone:
+  depth: 1
+pipelines:
+  branches:
+    master:
+      - step:
+          # The initial test step will simply check or the components still pass all their unit tests. Since these
+          # Are used by all the other items in the workflow tool.
+          name: Validating "components" package
+          caches:
+            - composer
+          # @TODO Setup a more optimized container instead of the full apache one.
+          image: surangagamage/heavyd-php-apache:7.1
+          script:
+            - composer install
+            - ./vendor/bin/phing packages:components-install -buildfile build.test.xml
+            - ./vendor/bin/phing packages:components-phpunit -buildfile build.test.xml
+          artifacts:
+            - packages/**
+

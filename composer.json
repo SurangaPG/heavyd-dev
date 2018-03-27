@@ -1,0 +1,9 @@
+{
+  "name": "workflow/dev",
+  "description": "The development set to work on various packages in the heavyd toolset.",
+  "prefer-stable": true,
+  "require": {
+    "phing/phing": "^2.16",
+    "phpunit/phpunit": "^7.0"
+  }
+}

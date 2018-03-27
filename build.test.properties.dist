@@ -1,0 +1,2 @@
+dir.packages.components = ${project.basedir}/packages/components
+dir.packages.seeder = ${project.basedir}/packages/seeder

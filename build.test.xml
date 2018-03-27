@@ -1,0 +1,22 @@
+<project name="Development test tasks" default="help" description="">
+    <property file="build.test.properties.local" />
+    <property file="build.test.properties.dist" />
+
+    <target name="packages:components-install" description="Installs the composer dependencies for the components package.">
+        <exec passthru="true" command="composer install --no-dev" checkreturn="true" dir="${dir.packages.components}"/>
+    </target>
+
+    <target name="packages:components-phpunit" description="Runs the phpunit tests for the components package.">
+        <exec passthru="true" command="${project.basedir}/vendor/bin/phpunit tests" checkreturn="true" dir="${dir.packages.components}"/>
+    </target>
+
+    <target name="packages:seeder-install" description="Installs the composer dependencies for the seeder package.">
+        <exec passthru="true" command="composer install --no-dev" checkreturn="true" dir="${dir.packages.seeder}"/>
+        <!-- Ensure the currently generated version for the "components" package is used for the tests -->
+        <exec passthru="true" command="rsync -vr --delete ${dir.packages.components}/ ${dir.packages.seeder}/vendor/workflow/components/ --exclude=vendor " checkreturn="true" />
+    </target>
+
+    <target name="packages:seeder-phpunit" description="Runs the phpunit tests for the seeder package.">
+        <exec passthru="true" command="${project.basedir}/vendor/bin/phpunit tests/Test/DefaultD8" checkreturn="true" dir="${project.basedir}"/>
+    </target>
+</project>
