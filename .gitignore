@@ -6,3 +6,7 @@ vendor
 
 # Ignore local properties
 build.test.properties.local
+
+# Ignore the dirs with documentation that is generated during the build proces.
+/docs/generated
+!/docs/generated/.gitkeep

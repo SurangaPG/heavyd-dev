@@ -1,0 +1,20 @@
+<project name="Documentation tasks" default="help" description="">
+    <property file="build.test.properties.local" />
+    <property file="build.test.properties.dist" />
+
+    <target name="documentation:dev-to-stable" description="Move the current dev version into a stable folder.">
+        <fail unless="heavyd.version" message="No version specified. Pass it via -Dheavyd-version"/>
+        <!-- @TODO: Temporary implementation. Currently just copy/pastes the source dir into the main dir -->
+        <exec passthru="true" command="rsync -vr --delete ${project.basedir}/docs/src/main/dev/ ${project.basedir}/docs/main/versions/v${heavyd.version}/" checkreturn="true" dir="${project.basedir}"/>
+    </target>
+
+    <target name="documentation:generate-main" description="Generate the main documentation artifact.">
+        <!-- @TODO: Temporary implementation. Currently just copy/pastes the source dir into the main dir -->
+        <exec passthru="true" command="rsync -vr --delete ${project.basedir}/docs/src/main/ ${project.basedir}/docs/generated/" checkreturn="true" dir="${project.basedir}"/>
+    </target>
+
+    <target name="documentation:generate-dev" description="Generate the main documentation artifact.">
+        <!-- @TODO: Temporary implementation. Currently just copy/pastes the source dir into the main dir -->
+        <exec passthru="true" command="rsync -vr --delete ${project.basedir}/docs/src/dev/ ${project.basedir}/docs/generated/dev/" checkreturn="true" dir="${project.basedir}"/>
+    </target>
+</project>

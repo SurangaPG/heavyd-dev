@@ -18,4 +18,18 @@ pipelines:
             - ./vendor/bin/phing packages:components-phpunit -buildfile build.test.xml
           artifacts:
             - packages/**
-
+      - step:
+          # Update the documentation by deploying the html to the online location.
+          name: Updating documentation
+          caches:
+            - composer
+          # @TODO Setup a more optimized container instead of the full apache one.
+          image: surangagamage/heavyd-php-apache:7.1
+          script:
+            # Places the default bitbucket id in the predictable location to make life easier for all the
+            # subsequent commands (rsync etc).
+            - ln -s /opt/atlassian/pipelines/agent/data/id_rsa ~/.ssh/id_rsa
+            - composer install
+            - ./vendor/bin/dep deploy-dev docs
+          artifacts:
+            - packages/**
