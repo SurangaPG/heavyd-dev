@@ -1,0 +1,22 @@
+uuid: 725cd0ee-48df-46ff-80fc-2fe3710399fb
+langcode: nl
+status: true
+dependencies:
+  config:
+    - node.type.technical_page
+id: node.technical_page.promote
+field_name: promote
+entity_type: node
+bundle: technical_page
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

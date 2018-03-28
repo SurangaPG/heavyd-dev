@@ -1,0 +1,27 @@
+uuid: 5881657e-939d-482c-9c59-4896ae711719
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.field.node.technical_page.body
+    - node.type.technical_page
+  module:
+    - text
+    - user
+id: node.technical_page.default
+targetEntityType: node
+bundle: technical_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

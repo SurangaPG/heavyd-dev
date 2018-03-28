@@ -19,6 +19,23 @@ pipelines:
           artifacts:
             - packages/**
       - step:
+          # This test will validate the various builds from the seeder. Which will ensure all the
+          # builds from the seeder are functional.
+          name: Validating "seeder" package
+          caches:
+            - composer
+          # @TODO Setup a more optimized container instead of the full apache one.
+          image: surangagamage/heavyd-php-apache:7.1
+          script:
+            - git config --global user.email "pipeline@test.com"
+            - git config --global user.name "Pipeline"
+            - composer install
+            - ./vendor/bin/phing packages:seeder-install -buildfile build.test.xml
+            - ./vendor/bin/phing packages:seeder-prepare-builds -buildfile build.test.xml -Ddir.seeder.build=/opt/atlassian/pipelines/agent/build/packages/seeder/build/default-d8
+            - ./vendor/bin/phing packages:seeder-phpunit -buildfile build.test.xml
+          artifacts:
+            - packages/**
+      - step:
           # Update the documentation by deploying the html to the online location.
           name: Updating documentation
           caches:

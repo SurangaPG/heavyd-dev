@@ -1,0 +1,18 @@
+uuid: 8af52e69-f2e3-48d1-b695-b8cbae5d0de6
+langcode: nl
+status: true
+dependencies:
+  theme:
+    - baseline_style
+id: baseline_style_page_title
+theme: baseline_style
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

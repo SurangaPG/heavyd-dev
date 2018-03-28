@@ -1,0 +1,29 @@
+uuid: 893127fb-f4e5-4873-a72b-eea05857f643
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_component
+    - node.type.container_page
+  module:
+    - entity_reference_revisions
+id: node.container_page.field_main_component
+field_name: field_main_component
+entity_type: node
+bundle: container_page
+label: Inhoud
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+    target_bundles_drag_drop:
+      basic_component:
+        weight: 2
+        enabled: false
+field_type: entity_reference_revisions

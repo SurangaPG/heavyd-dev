@@ -1,0 +1,63 @@
+# Ignore the config folders that have to be provisioned manually.
+# The logic is as follows:
+#  - dist: Everything that can be shared globally and universally
+#  - env: Everything environment specific, this is auto provisioned via the phing env:setup command.
+#  - stage: Everything that is completely specific to this site instance.
+#
+# Once all these have been populated the phing command can be used to set up the full "final" config dir.
+/properties/env/*.yml
+/properties/stage/*.yml
+/properties/site/*.yml
+/properties/*.yml
+
+# For custom local installations we'll provide a local dir where you can place extra config files.
+# These can be activated in the standard way.
+/etc/env/local/properties/*.yml
+!/etc/env/local/properties/project.yml
+
+# Node
+node_modules
+bower_components
+
+# Workflow
+/temp
+/tests/artifact
+
+# Vagrant
+.vagrant
+vagrant/.vagrant
+vagrant/.local-settings.json
+
+# Drupal
+web/sites/local.sites.php
+web/sites/*/files
+web/sites/*/local.sites.php
+web/modules/contrib
+web/modules/generic
+web/modules/custom/baseline_content/content
+web/profiles/contrib
+web/themes/contrib
+web/themes/generic
+web/core
+
+# Ignore some local only settings files.
+web/sites/*/settings.*.php
+web/sites/*/services.*.yml
+
+# Ignore the private and temp files
+etc/*/private
+etc/*/temp
+
+# Prevent seed files from being committed
+seed.yml
+
+# Ignore composer items.
+vendor
+
+# Ignore generated docker-compose.yml
+/docker-compose.yml
+
+# Ignore the auto generated behat.yml file
+/tests/behat/behat.yml
+
+/.htpasswd

@@ -1,0 +1,7 @@
+name: Baseline Content
+type: module
+description: 'Provides a baseline set of content to use on the different environments.'
+core: 8.x
+package : Baseline
+dependencies:
+  - default_content

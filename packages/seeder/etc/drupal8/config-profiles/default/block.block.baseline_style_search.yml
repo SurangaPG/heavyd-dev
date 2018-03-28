@@ -1,0 +1,20 @@
+uuid: 5f36c634-2204-44cb-952b-9f75e09af3a2
+langcode: nl
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - baseline_style
+id: baseline_style_search
+theme: baseline_style
+region: header
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

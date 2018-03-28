@@ -1,0 +1,11 @@
+uuid: 0b6069db-4692-4422-bcb0-a590fae8c2c9
+langcode: nl
+status: true
+dependencies:
+  config:
+    - node.type.dynamic_page
+id: node.dynamic_page
+target_entity_type_id: node
+target_bundle: dynamic_page
+default_langcode: site_default
+language_alterable: false

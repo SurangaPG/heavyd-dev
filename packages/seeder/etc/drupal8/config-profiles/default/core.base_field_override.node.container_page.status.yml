@@ -1,0 +1,22 @@
+uuid: 01f6f713-d1c1-413c-9390-97d2863af4ca
+langcode: nl
+status: true
+dependencies:
+  config:
+    - node.type.container_page
+id: node.container_page.status
+field_name: status
+entity_type: node
+bundle: container_page
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

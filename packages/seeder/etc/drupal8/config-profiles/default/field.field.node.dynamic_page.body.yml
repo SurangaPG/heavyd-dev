@@ -1,0 +1,22 @@
+uuid: 96d86aea-e990-4718-b7e0-33f5af36a049
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.dynamic_page
+  module:
+    - text
+id: node.dynamic_page.body
+field_name: body
+entity_type: node
+bundle: dynamic_page
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

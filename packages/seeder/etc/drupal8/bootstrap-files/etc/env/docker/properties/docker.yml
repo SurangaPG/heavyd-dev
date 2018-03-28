@@ -1,0 +1,9 @@
+containerActive: true
+containerRoot: /webdata
+web:
+  port: 8090:80
+  volume: ${project.basedir}
+db:
+  port: 3307:3306
+  volume: ${dir.services.db}
+  pass: KEVSsuhdkHUdsBMdqKJSdsBhhdj3

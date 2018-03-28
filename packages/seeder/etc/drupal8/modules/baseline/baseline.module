@@ -1,0 +1,101 @@
+<?php
+
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function baseline_toolbar_alter(&$items) {
+  $items['home']['#attached']['library'][] = 'baseline/baseline.toolbar';
+}
+
+/**
+ * Implements hook_theme_suggestions_views_view_alter().
+ */
+function baseline_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+
+  // This adds an extra suggestion to all the custom blocks that use the
+  // block_content based on the bundle of their nested entity.
+  if($variables['elements']['#base_plugin_id'] == 'block_content') {
+    $suggestions[] = 'block__type__' . $variables['elements']['content']['#block_content']->bundle();
+  }
+}
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function baseline_theme_suggestions_user_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'user__' . $variables['elements']['#view_mode'];
+}
+
+/**
+ * Implements hook_toolbar().
+ */
+function baseline_toolbar() {
+  $user = \Drupal::currentUser();
+
+  $items = [];
+  if ($user->hasPermission('use baseline toolbar tray')) {
+    $items['baseline_toolbar'] = [
+      '#type' => 'toolbar_item',
+      'tab' => [
+        '#type' => 'link',
+        '#title' => t('Content'),
+        '#url' => Url::fromRoute('<front>'),
+        '#attributes' => [
+          'title' => t('Manage all the content'),
+          'class' => ['toolbar-icon', 'toolbar-icon-baseline-tray-tab'],
+        ],
+      ],
+      'tray' => [
+        '#heading' => t('Content'),
+        'workbench_toolbar' => [
+          '#pre_render' => [
+            'baseline_toolbar_prerender_tray',
+          ],
+        ],
+        '#type' => 'container',
+      ],
+      '#attached' => [
+        'library' => [
+          'baseline/baseline.toolbar',
+        ],
+      ],
+      '#weight' => -18,
+    ];
+  }
+  return $items;
+}
+
+
+/**
+ * Render the Workbench toolbar tray.
+ *
+ * @param array $element
+ *   The tray render array.
+ *
+ * @return array
+ *   The tray render array with the Workbench items added.
+ *
+ * @see toolbar_prerender_toolbar_administration_tray()
+ * @see drupal_render()
+ */
+function baseline_toolbar_prerender_tray(array $element) {
+  $menu_tree = \Drupal::service('toolbar.menu_tree');
+
+  $parameters = new MenuTreeParameters();
+  $parameters->setMinDepth(1)->setMaxDepth(1);
+
+  $tree = $menu_tree->load('baseline-toolbar', $parameters);
+
+  $manipulators = [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+    ['callable' => 'toolbar_menu_navigation_links'],
+  ];
+
+  $tree = $menu_tree->transform($tree, $manipulators);
+
+  $element['administration_menu'] = $menu_tree->build($tree);
+  return $element;
+}

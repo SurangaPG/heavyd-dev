@@ -1,0 +1,12 @@
+name: Site-Install
+mail: admin@example.com
+slogan: ''
+page:
+  403: /node/1
+  404: /node/2
+  front: /node/3
+admin_compact_mode: false
+weight_select_max: 100
+langcode: nl
+default_langcode: nl
+mail_notification: ''

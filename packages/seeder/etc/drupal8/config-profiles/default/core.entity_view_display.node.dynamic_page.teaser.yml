@@ -1,0 +1,29 @@
+uuid: 0bd51505-0160-4015-a728-8ecf4cc38c94
+langcode: nl
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dynamic_page.body
+    - node.type.dynamic_page
+  module:
+    - text
+    - user
+id: node.dynamic_page.teaser
+targetEntityType: node
+bundle: dynamic_page
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

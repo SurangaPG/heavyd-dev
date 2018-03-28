@@ -1,0 +1,20 @@
+uuid: b50d3da3-6b09-4077-bd77-eb47fd8e1da2
+langcode: nl
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - baseline_style
+id: baseline_style_help
+theme: baseline_style
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

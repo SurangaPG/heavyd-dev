@@ -1,0 +1,20 @@
+uuid: e176b006-d3cc-4eec-8641-5ef1ed499d1c
+langcode: nl
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - baseline_admin_style
+id: baseline_admin_style_breadcrumbs
+theme: baseline_admin_style
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

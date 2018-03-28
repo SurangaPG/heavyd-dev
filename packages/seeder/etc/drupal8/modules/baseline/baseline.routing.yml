@@ -1,0 +1,15 @@
+baseline.entity.taxonomy_term.add_form:
+  path: '/admin/{taxonomy_vocabulary}/add'
+  defaults:
+    _controller: '\Drupal\taxonomy\Controller\TaxonomyController::addForm'
+    _title: 'Add term'
+  requirements:
+    _entity_create_access: 'taxonomy_term:{taxonomy_vocabulary}'
+
+baseline.entity.taxonomy_vocabulary.overview_form:
+  path: '/admin/{taxonomy_vocabulary}/overview'
+  defaults:
+    _form: 'Drupal\taxonomy\Form\OverviewTerms'
+    _title_callback: 'Drupal\taxonomy\Controller\TaxonomyController::vocabularyTitle'
+  requirements:
+    _entity_access: 'taxonomy_vocabulary.view'

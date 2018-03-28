@@ -1,0 +1,6 @@
+vendor
+output
+/seed.yml
+build
+/temp
+build.test.properties.local

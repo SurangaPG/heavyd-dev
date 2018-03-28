@@ -1,0 +1,18 @@
+uuid: e22f9398-2a50-4a4c-977d-7fc17dd3930d
+langcode: nl
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Container page'
+type: container_page
+description: 'Used for pages that should be editable (but not deletable) by the end user. Such as overview pages, the home page etc. '
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

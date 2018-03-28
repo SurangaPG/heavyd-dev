@@ -1,0 +1,21 @@
+version: '2'
+services:
+  ${project.machineName}-${project.group}-web:
+    image: heavyd/php:7.0.x
+    ports:
+        -  ${docker.web.port}
+    volumes:
+        - ${docker.web.volume}:/webdata
+    links:
+        - ${project.machineName}-${project.group}-db:db
+    environment:
+        WEB_ROOT: /webdata/web
+  ${project.machineName}-${project.group}-db:
+    image: heavyd/sql:5.6.x
+    ports:
+        - ${docker.db.port}
+    volumes:
+        - ${docker.db.volume}:/webdata
+    environment:
+        MYSQL_PASS: ${docker.db.pass}
+        ON_CREATE_DB: web_db

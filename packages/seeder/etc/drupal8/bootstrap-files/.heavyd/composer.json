@@ -1,0 +1,23 @@
+{
+  "name": "webct/platform",
+  "require": {
+    "heavyd/platform": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "git@github.com:SurangaPG/heavyd.git"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Suranga Panagamuwa Gamage",
+      "email": "suranga@webct.be"
+    }
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

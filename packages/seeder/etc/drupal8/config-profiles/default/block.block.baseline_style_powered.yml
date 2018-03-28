@@ -1,0 +1,20 @@
+uuid: ba552454-4511-4ee6-acb1-be6ec30fcf2b
+langcode: nl
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - baseline_style
+id: baseline_style_powered
+theme: baseline_style
+region: header
+weight: 10
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

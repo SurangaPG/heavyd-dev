@@ -1,0 +1,26 @@
+{
+  "repositories": {
+    "heavyd-components": {
+      "type": "vcs",
+      "url": "git@github.com:SurangaPG/heavyd-components.git"
+    }
+  },
+  "name": "heavyd/seeder",
+  "autoload": {
+    "psr-4": {
+      "surangapg\\HeavydSeeder\\Test\\": "tests/Test",
+      "surangapg\\HeavydSeeder\\": "src"
+    }
+  },
+  "prefer-stable": true,
+  "require": {
+    "heavyd/components": "@dev",
+    "phing/phing": "^2.16",
+    "phpunit/phpunit": "^7.0"
+  },
+  "config": {
+    "platform": {
+      "php": "7.1.18"
+    }
+  }
+}

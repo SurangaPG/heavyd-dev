@@ -1,0 +1,2 @@
+dir.build = ${project.basedir}/build
+dir.fixtures = ${project.basedir}/tests/fixtures

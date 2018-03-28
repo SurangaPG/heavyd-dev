@@ -1,0 +1,20 @@
+uuid: 6f167423-72b7-4d1b-ba36-ecef223ca8cd
+langcode: nl
+status: true
+dependencies:
+  theme:
+    - baseline_admin_style
+id: baseline_admin_style_primary_local_tasks
+theme: baseline_admin_style
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility: {  }

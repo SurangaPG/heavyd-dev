@@ -1,0 +1,47 @@
+default:
+  suites:
+    default:
+      contexts:
+        - DrupalProject\Behat\BaselineContext
+        - DrupalProject\Behat\ToolbarContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MinkContext
+      filters:
+        tags: '~@wip'
+  extensions:
+    Behat\MinkExtension:
+      base-url: '${host.default.domain}/'
+      files_path: '${behat.fixtures.files}'
+      goutte: ~
+      selenium2: ~
+      javascript_session: '${behat.javascript_session}'
+      browser_name: '${behat.browser_name}'
+      selenium2:
+        wd_host: '${behat.webdriver.url}'
+    Drupal\DrupalExtension:
+      api_driver: '${behat.api_driver}'
+      blackbox: ~
+      drupal:
+        drupal_root: '${dir.web.root}'
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages--error'
+        # @TODO Make this the same in the back and the front end.
+        success_message_selector: '.alert-success'
+      text:
+        log_in: 'edit-submit'
+        log_out: 'edit-submit'
+        password_field: 'edit-pass'
+        username_field: 'edit-name'
+      # @see vendor/drupal/drupal-extension/src/Drupal/DrupalExtension/ServiceContainer/config/services.yml
+      # Used to easily detect regions via: $regionObj = $this->getRegion($region);
+      region_map:
+        sidebar: '.layout-region--content-aside'
+  formatters:
+    pretty: ~
+  # Fix can't run individual features
+  # https://github.com/Behat/Gherkin/issues/97#issuecomment-169134216
+  # https://github.com/Behat/Behat/issues/1076
+  gherkin:
+    cache: ~

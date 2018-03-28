@@ -1,0 +1,29 @@
+uuid: 5616aae0-b4f4-49b7-8f18-0d0e413c8cf8
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.field.node.container_page.field_main_component
+    - node.type.container_page
+  module:
+    - entity_reference_revisions
+    - user
+id: node.container_page.default
+targetEntityType: node
+bundle: container_page
+mode: default
+content:
+  field_main_component:
+    type: entity_reference_revisions_entity_view
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

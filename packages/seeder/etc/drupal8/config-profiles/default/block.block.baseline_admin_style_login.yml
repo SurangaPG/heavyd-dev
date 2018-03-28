@@ -1,0 +1,20 @@
+uuid: 1d8d49da-7eb0-4766-8796-75d1c8489361
+langcode: nl
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - baseline_admin_style
+id: baseline_admin_style_login
+theme: baseline_admin_style
+region: content
+weight: 10
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  provider: user
+  label_display: visible
+visibility: {  }

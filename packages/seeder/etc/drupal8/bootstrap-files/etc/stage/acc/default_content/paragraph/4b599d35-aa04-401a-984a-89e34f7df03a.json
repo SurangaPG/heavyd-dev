@@ -1,0 +1,123 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/basic_component"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/basic_component\/uid": [
+            {
+                "href": "https:\/\/[--placeholder--]\/user\/1?_format=hal_json",
+                "lang": "nl"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/basic_component\/revision_uid": [
+            {
+                "href": "https:\/\/[--placeholder--]\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 1
+        }
+    ],
+    "uuid": [
+        {
+            "value": "4b599d35-aa04-401a-984a-89e34f7df03a"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": 2
+        }
+    ],
+    "type": [
+        {
+            "target_id": "basic_component"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "nl",
+            "lang": "nl"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/basic_component\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "https:\/\/[--placeholder--]\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0749f2be-5745-49b0-9c39-0da6724c6af5"
+                    }
+                ],
+                "lang": "nl"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/basic_component\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "https:\/\/[--placeholder--]\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0749f2be-5745-49b0-9c39-0da6724c6af5"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": true,
+            "lang": "nl"
+        }
+    ],
+    "created": [
+        {
+            "value": "2018-03-05T18:29:27+00:00",
+            "lang": "nl",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "3"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_main_component"
+        }
+    ],
+    "behavior_settings": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "nl"
+        }
+    ]
+}

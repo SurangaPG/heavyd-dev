@@ -1,0 +1,19 @@
+# CSS libraries
+global-styling:
+  version: 1.x
+  css:
+    base:
+      src/base/base.css: {}
+    component:
+      src/component/baseline-icon/baseline-icon.css: {}
+      src/component/pager/pager.css: {}
+    layout:
+      src/layout/layout.css: {}
+    theme:
+      src/misc/misc.css: {}
+      src/util/util.css: {}
+      src/base/print.css: { media: print }
+  js:
+    src/base/base.js: {}
+  dependencies:
+    - core/jquery

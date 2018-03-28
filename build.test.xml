@@ -13,10 +13,16 @@
     <target name="packages:seeder-install" description="Installs the composer dependencies for the seeder package.">
         <exec passthru="true" command="composer install --no-dev" checkreturn="true" dir="${dir.packages.seeder}"/>
         <!-- Ensure the currently generated version for the "components" package is used for the tests -->
-        <exec passthru="true" command="rsync -vr --delete ${dir.packages.components}/ ${dir.packages.seeder}/vendor/workflow/components/ --exclude=vendor " checkreturn="true" />
+        <exec passthru="true" command="rsync -vr --delete ${dir.packages.components}/ ${dir.packages.seeder}/vendor/heavyd/components/ --exclude=vendor " checkreturn="true" />
+    </target>
+
+    <target name="packages:seeder-prepare-builds" description="Prepares the builds in the seeder repository.">
+        <fail unless="dir.seeder.build" />
+        <exec passthru="true" command="./vendor/bin/phing setup:seed-file -buildfile build.test.xml" checkreturn="true" dir="${project.basedir}/packages/seeder"/>
+        <exec passthru="true" command="./vendor/bin/phing seed:drupal8 -Ddir.build=${dir.seeder.build}" checkreturn="true" dir="${project.basedir}/packages/seeder"/>
     </target>
 
     <target name="packages:seeder-phpunit" description="Runs the phpunit tests for the seeder package.">
-        <exec passthru="true" command="${project.basedir}/vendor/bin/phpunit tests/Test/DefaultD8" checkreturn="true" dir="${project.basedir}"/>
+        <exec passthru="true" command="${project.basedir}/vendor/bin/phpunit tests" checkreturn="true" dir="${project.basedir}/packages/seeder"/>
     </target>
 </project>

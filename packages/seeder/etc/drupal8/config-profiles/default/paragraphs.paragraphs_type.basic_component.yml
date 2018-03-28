@@ -1,0 +1,11 @@
+uuid: 34e7df48-5a9d-408d-aaa7-25ea4e9573fc
+langcode: nl
+status: true
+dependencies:
+  content:
+    - 'file:file:bdf0ff73-9621-401f-a27c-cc83c371d3c6'
+id: basic_component
+label: 'Simpele tekst'
+icon_uuid: bdf0ff73-9621-401f-a27c-cc83c371d3c6
+description: 'Een basis paragraph item met een optionele titel en tekst.'
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+.pager {
+  display: flex;
+  justify-content: center; }
+  .pager__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block; }
+    .pager__items.-no-next {
+      padding-right: 2.4rem; }
+    .pager__items.-no-previous {
+      padding-left: 2.4rem; }
+  .pager__item {
+    display: inline-block;
+    margin: 0 0.4rem; }
+    .pager__item > a {
+      background-color: white;
+      color: black;
+      text-decoration: none;
+      width: 1.6rem; }
+  .pager__text {
+    display: inline-block;
+    padding: 0.5rem; }

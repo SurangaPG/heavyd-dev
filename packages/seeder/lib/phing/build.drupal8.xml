@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<project name="Drupal 8 specific seed tasks" default="help" description="">
+
+    <target name="help">
+        <echo message="see ... documentation link for more info" />
+    </target>
+
+    <target name="drupal8:bootstrap-files" description="Gets all the initial base files needed for a drupal 8 project.">
+        <exec passthru="true" command="rsync -vr ${project.basedir}/etc/drupal8/bootstrap-files/ ${dir.build}/" />
+    </target>
+
+    <target name="drupal8:lock-composer-php-versions" description="Locks a php version in a composer.json file to a given value.">
+        <exec passthru="true" command="composer config platform.php ${seed.project_php_version}" dir="${dir.build}/.heavyd"/>
+        <exec passthru="true" command="composer config platform.php ${seed.project_php_version}" dir="${dir.build}"/>
+    </target>
+
+    <target name="drupal8:composer-install" description="Installs the drupal 8 project via composer to ensure some extra files etc for the scaffold.">
+        <exec passthru="true" command="composer install" dir="${dir.build}"/>
+        <exec passthru="true" command="composer install" dir="${dir.build}/.heavyd"/>
+    </target>
+
+    <target name="drupal8:validate-seed-data" description="checks or all the needed seed properties were added.">
+        <fail unless="seed.project_label" />
+        <fail unless="seed.project_type" />
+        <fail unless="seed.project_group" />
+        <fail unless="seed.project_name" />
+        <fail unless="seed.project_php_version" />
+        <fail unless="seed.project_git_repository" />
+    </target>
+
+    <target name="drupal8:baseline-init" description="Initialise the baseline module and style to the project.">
+        <copy todir="${dir.build}/web/modules/custom">
+            <fileset dir="${project.basedir}/etc/drupal8/modules">
+                <patternset>
+                    <include name="**"/>
+                </patternset>
+            </fileset>
+        </copy>
+
+        <copy todir="${dir.build}/web/themes/custom">
+            <fileset dir="${project.basedir}/etc/drupal8/themes">
+                <patternset>
+                    <include name="**"/>
+                </patternset>
+            </fileset>
+        </copy>
+    </target>
+</project>

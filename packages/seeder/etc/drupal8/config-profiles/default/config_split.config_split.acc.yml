@@ -1,0 +1,14 @@
+uuid: be0f6117-efbe-4e49-861e-77a9abaec52e
+langcode: nl
+status: false
+dependencies: {  }
+id: acc
+label: acc
+folder: ../etc/sites/default/stages/acc/config
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

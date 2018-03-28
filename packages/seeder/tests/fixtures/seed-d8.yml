@@ -1,0 +1,36 @@
+# Project details.
+# Human readable label for the entire project. e.g Eboard.
+project_label: "Human readable label"
+# Type of the project.
+project_type: d8
+# Machine name for the group, fe.g or example "vds" or "toevla".
+project_group: "group_machine_name"
+# More specific name for the site, e.g: "esoleren" or "datatank".
+project_name: "project_machine_name"
+# php version for this project (will ensure composer runs the correct version etc).
+project_php_version: 7.0.15
+# Main version for the repository.
+project_git_repository: "git@bitbucket.org:suranga_gamage/bananavans.git"
+
+# Optionally, add the different servers this site will run on.
+servers:
+  prod:
+    # Decides which environment is used (so this should match one of the env directories in the /etc/env folder).
+    server_hosted_by: level27
+    # Host for the server (which is used when ssh'ing).
+    server_host: somehwere.level27.be
+    # User to ssh with.
+    server_user: vd6437
+    # Root of the project (not the webroot!). Deployer will place the fully build project here.
+    server_root: /var/web/vd6437/prod-machine
+    # Stage to deploy to this site.
+    server_stage: prod
+    # Env to deploy to this site.
+    server_env: level27
+
+# Define which site folders should be made available. Generates the sites/[KEY] folders.
+sites:
+  default:
+    # Selects the config profile for the new folder (base set of config to install the site with).
+    config-profile: default
+

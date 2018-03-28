@@ -1,0 +1,20 @@
+uuid: 484b0a12-c6fa-49af-a02c-8deb91b7f632
+langcode: nl
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - baseline_style
+id: baseline_style_messages
+theme: baseline_style
+region: header
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

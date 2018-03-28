@@ -1,0 +1,4 @@
+use baseline toolbar tray:
+  title: 'Access baseline tray item'
+  description: 'Use the baseline trayitem.'
+  restrict access: TRUE

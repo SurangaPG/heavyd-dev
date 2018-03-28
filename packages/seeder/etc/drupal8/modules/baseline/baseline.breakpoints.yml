@@ -1,0 +1,35 @@
+baseline.xs:
+  label: Extra small
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+baseline.sm:
+  label: Small
+  mediaQuery: '(min-width: 576px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+baseline.md:
+  label: Medium
+  mediaQuery: '(min-width: 768px)'
+  weight: 10
+  multipliers:
+    - 1x
+    - 2x
+baseline.lg:
+  label: Large
+  mediaQuery: '(min-width: 992px)'
+  weight: 20
+  multipliers:
+    - 1x
+    - 2x
+baseline.xl:
+  label: Extra large
+  mediaQuery: '(min-width: 1200px)'
+  weight: 30
+  multipliers:
+    - 1x
+    - 2x

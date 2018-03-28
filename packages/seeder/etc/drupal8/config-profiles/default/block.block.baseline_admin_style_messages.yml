@@ -1,0 +1,20 @@
+uuid: 5bf98ea7-db25-429b-ba44-05d0ef64fae5
+langcode: nl
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - baseline_admin_style
+id: baseline_admin_style_messages
+theme: baseline_admin_style
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

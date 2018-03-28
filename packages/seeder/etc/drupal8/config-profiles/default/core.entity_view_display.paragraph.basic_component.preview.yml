@@ -1,0 +1,32 @@
+uuid: f0e52ea4-e187-4b08-86d9-08981afc728a
+langcode: nl
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.basic_component.field_content
+    - field.field.paragraph.basic_component.field_title
+    - paragraphs.paragraphs_type.basic_component
+  module:
+    - text
+id: paragraph.basic_component.preview
+targetEntityType: paragraph
+bundle: basic_component
+mode: preview
+content:
+  field_content:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

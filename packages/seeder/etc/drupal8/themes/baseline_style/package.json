@@ -1,0 +1,56 @@
+{
+  "name": "baseline_style",
+  "version": "1.0.0",
+  "description": "Component based drupal theme",
+  "author": "Marc Holemans & Suranga Gamage",
+  "license": "ISC",
+  "config": {
+    "localhost": "http://limburgnet.local",
+    "styles_src": "src/",
+    "styles_dest": "src/",
+    "scripts_src": "src/",
+    "scripts_dest": "src/"
+  },
+  "scripts": {
+    "theme:install": "yarn install --pure-lockfile",
+    "serve": "npm run build:theme && npm-run-all -p watch browser-sync",
+    "browser-test": "echo 'URL: '; read URL; browser-sync start --proxy $URL -f dist/css/ --ss dist/js/ -b 'Google Chrome' -b 'Firefox' -b 'Safari'",
+    "release": "npm run build:theme && npm run autoprefixer && npm run cssnano",
+    "postrelease": "echo '🏆  DONE. Ready to commit!  📦'",
+    "watch": "npm-run-all -p watch:css watch:js",
+    "build:theme": "npm-run-all --parallel build:css build:styleguide",
+    "build:css": "node-sass src/ -o src/ --importer node_modules/node-sass-glob-importer/dist/cli.js --include-path node_modules/bootstrap/scss --include-path node_modules/family.scss/source/src",
+    "postbuild:css": "echo '🌈  CSS build done 🌈'",
+    "prebuild:styleguide": "npm run concat:js",
+    "build:styleguide": "kss --source src --homepage '../styleguide-homepage.md' --css ../src/styleguide.css --js https://code.jquery.com/jquery-3.2.1.slim.min.js --js https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js --js https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js --js /core/assets/vendor/domready/ready.min.js --js /core/misc/drupal.js --js styleguide/kss-assets/styleguide.js --title 'Style guide'  --builder builder/twig",
+    "autoprefixer": "postcss $npm_package_config_styles_dest'*.css' -u autoprefixer -b 'last 2 versions' -r --map",
+    "postautoprefixer": "echo '🌏💥  CSS autoprefixing done.'",
+    "cssnano": "postcss --use cssnano -r $npm_package_config_styles_dest'*.css' --map",
+    "postcssnano": "echo '🍤  CSS minification done.'",
+    "prewatch:css": "echo '👀  Watching SCSS. 👀'",
+    "watch:css": "onchange 'src/**/*.scss' 'src/**/*.twig' -- npm-run-all -p build:css build:styleguide",
+    "browser-sync": "browser-sync start --proxy $npm_package_config_localhost -f dist/",
+    "prewatch:js": "echo '👀  Watching JS. 👀'",
+    "watch:js": "onchange 'src/**/*.js' -- npm run concat:js",
+    "concat:js": "find src/ -name '*.js' -exec cat {} ';' > styleguide/kss-assets/styleguide.js",
+    "postcontact:js": "echo '🗿  JS concatenation for styleguide done.'",
+    "favicon:generate": "real-favicon generate assets/favicon/description.json assets/favicon/data.json assets/favicon"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-beta",
+    "popper.js": "^1.12.6"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.3",
+    "browser-sync": "^2.18.13",
+    "cli-real-favicon": "^0.0.6",
+    "cssnano": "^3.10.0",
+    "family.scss": "^1.0.8",
+    "kss": "^3.0.0-beta.18",
+    "node-sass": "^4.5.3",
+    "node-sass-glob-importer": "^5.0.0-alpha.15",
+    "npm-run-all": "^4.1.1",
+    "onchange": "^3.2.1",
+    "postcss-cli": "^4.1.0"
+  }
+}

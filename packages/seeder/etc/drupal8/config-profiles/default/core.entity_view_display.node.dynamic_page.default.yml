@@ -1,0 +1,27 @@
+uuid: e3219935-d031-44b0-b848-a7cd70424466
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.field.node.dynamic_page.body
+    - node.type.dynamic_page
+  module:
+    - text
+    - user
+id: node.dynamic_page.default
+targetEntityType: node
+bundle: dynamic_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

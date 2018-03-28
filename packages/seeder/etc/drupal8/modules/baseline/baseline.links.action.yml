@@ -1,0 +1,11 @@
+baseline_toolbar.node.add_page:
+  route_name: node.add_page
+  title: 'Add content'
+  appears_on:
+    - view.toolbar_pages.main
+
+baseline_toolbar.redirect.add_redirect:
+  route_name: redirect.add
+  title: 'Add redirect'
+  appears_on:
+    - view.toolbar_redirects.main

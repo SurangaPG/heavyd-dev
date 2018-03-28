@@ -1,0 +1,24 @@
+uuid: 69341968-2c76-499d-af8e-8d675f6f06e6
+langcode: nl
+status: true
+dependencies:
+  module:
+    - node
+id: menu_structure_based
+label: 'Menu structure based'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria:
+  cddb41b6-4893-4e13-b8e2-1c80cf48221b:
+    id: node_type
+    bundles:
+      container_page: container_page
+      dynamic_page: dynamic_page
+      page: page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: cddb41b6-4893-4e13-b8e2-1c80cf48221b
+selection_logic: and
+weight: -5
+relationships: {  }

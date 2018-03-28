@@ -1,0 +1,24 @@
+uuid: 883d824e-0f1d-4248-934b-f07b572a9135
+langcode: nl
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - baseline_style
+id: baseline_style_account_menu
+theme: baseline_style
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

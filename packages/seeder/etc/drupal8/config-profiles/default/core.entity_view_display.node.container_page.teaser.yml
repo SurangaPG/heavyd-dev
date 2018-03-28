@@ -1,0 +1,21 @@
+uuid: ff3ff532-36ba-4ea3-8282-5ad4f8e76161
+langcode: nl
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.container_page.field_main_component
+    - node.type.container_page
+  module:
+    - user
+id: node.container_page.teaser
+targetEntityType: node
+bundle: container_page
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_main_component: true
+  langcode: true

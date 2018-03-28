@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Preprocess functions for the baseline_style theme.
+ */
+
+/**
+ * Implements hook_preprocess_region() for region.html.twig.
+ */
+function baseline_style_preprocess_region(array &$variables) {
+  $region = str_replace('_', '-', $variables['region']);
+  $variables['attributes']['class'][] = 'layout-region--' . $region;
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function baseline_style_page_attachments_alter(array &$page) {
+  // Delete the core favicon and so it uses the one in the template.
+  // @see template/layout/html.html.twig.
+  if (isset($page['#attached']['html_head_link'][0])) {
+    foreach ($page['#attached']['html_head_link'][0] as $index => $data) {
+      if ($data['rel'] == 'shortcut icon') {
+        $page['#attached']['html_head_link'][0][$index]['href'] = '/themes/custom/baseline_style/assets/favicon/favicon.ico';
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+uuid: 8a918768-3b75-4f3f-a0d7-47689ffb2f71
+langcode: nl
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: 4
+is_admin: null
+permissions:
+  - 'access toolbar'
+  - 'use baseline toolbar tray'
+  - 'use text format basic_html'

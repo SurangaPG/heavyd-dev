@@ -1,0 +1,16 @@
+uuid: 8d6c36c2-fd57-44bf-a7bf-b29aae52aeb2
+langcode: nl
+status: false
+dependencies: {  }
+id: dev
+label: dev
+folder: ../etc/sites/default/stages/dev/config
+module:
+  twig_xdebug: 0
+  stage_file_proxy: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

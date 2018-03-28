@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Theme override for a views mini-pager.
+ *
+ * Available variables:
+ * - items: List of pager items.
+ *
+ * @see template_preprocess_views_mini_pager()
+ */
+#}
+{% if items.previous or items.next %}
+
+  {# Add a class that accounts for the lack of a previous or next item #}
+  {% set extraClasses = '' %}
+  {% if not items.previous %}
+    {% set extraClasses = extraClasses ~ '-no-previous' %}
+  {% endif %}
+
+  {% if not items.next %}
+    {% set extraClasses = extraClasses ~ ' -no-next' %}
+  {% endif %}
+
+  <nav class="pager -mini" role="navigation" aria-labelledby="pagination-heading">
+    <h4 class="visually-hidden">{{ 'Pagination'|t }}</h4>
+    <ul class="js-pager__items pager__items {{ extraClasses }}">
+      {% if items.previous %}
+        <li class="pager__item">
+          <a class="pager__text" href="{{ items.previous.href }}" title="{{ 'Go to previous page'|t }}" rel="prev"{{ items.previous.attributes|without('href', 'title', 'rel') }}>
+            <span class="visually-hidden">{{ 'Previous page'|t }}</span>
+            <span aria-hidden="true">{{ items.previous.text|default('‹‹'|t) }}</span>
+          </a>
+        </li>
+      {% endif %}
+      {% if items.current %}
+        <li class="pager__item">
+          <span class="pager__text">
+            {% trans %}
+              Page {{ items.current }}
+            {% endtrans %}
+          </span>
+        </li>
+      {% endif %}
+      {% if items.next %}
+        <li class="pager__item">
+          <a class="pager__text" href="{{ items.next.href }}" title="{{ 'Go to next page'|t }}" rel="next"{{ items.next.attributes|without('href', 'title', 'rel') }}>
+            <span class="visually-hidden">{{ 'Next page'|t }}</span>
+            <span aria-hidden="true">{{ items.next.text|default('››'|t) }}</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

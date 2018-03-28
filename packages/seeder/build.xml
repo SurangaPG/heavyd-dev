@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<project name="Seed tasks" default="help" description="">
+    <property file="build.properties.local" />
+    <property file="build.properties" />
+    <property file="build.properties.dist" />
+
+    <target name="help">
+        <echo message="see ... documentation link for more info" />
+    </target>
+
+    <!-- Include extra phing task classes -->
+    <includepath classpath="lib/phing/src" />
+    <taskdef classname="ServerWriteDistPropertiesTask" name="write-server-properties" />
+    <taskdef classname="ServerProvisionEnvFileTask" name="provision-server-env-file" />
+    <taskdef classname="ProjectWriteDistPropertiesTask" name="write-project-properties" />
+    <taskdef classname="JiraWriteDistPropertiesTask" name="write-jira-properties" />
+    <taskdef classname="SitesGenerateDirsTask" name="generate-site-dirs" />
+    <taskdef classname="SitesAddConfigTask" name="generate-site-config" />
+
+    <!-- Include extra phing build files -->
+    <import file="lib/phing/build.drupal8.xml" />
+    <import file="lib/phing/build.git.xml" />
+
+    <!-- Start a full drupal 8 project -->
+    <target name="seed:cleanse-build">
+        <delete dir="${dir.build}" />
+        <mkdir dir="${dir.build}" />
+    </target>
+
+    <target name="seed:drupal8-sandbox" description="Generates a sandbox environment for a module.">
+        <phingcall target="seed:cleanse-build" />
+        <mkdir dir="${dir.build}/module" />
+        <mkdir dir="${dir.build}/module/${module.name}" />
+        <exec command="drush dl drupal --drupal-project-rename=environment" dir="${dir.build}"/>
+        <exec command="composer install" dir="${dir.build}/environment"/>
+        <mkdir dir="${dir.build}/environment/modules/custom"/>
+    </target>
+
+    <!-- Start a full drupal 8 project -->
+    <target name="seed:drupal8">
+        <mkdir dir="${dir.build}" />
+        <property file="seed.yml" prefix="seed"/>
+        <phingcall target="drupal8:validate-seed-data" />
+
+        <phingcall target="drupal8:bootstrap-files" />
+        <phingcall target="git:init" />
+        <phingcall target="git:add-remote">
+            <property name="remote.to.add" value="origin" />
+            <property name="url.for.remote" value="${seed.project_git_repository}" />
+        </phingcall>
+        <phingcall target="drupal8:lock-composer-php-versions" />
+        <phingcall target="drupal8:composer-install" />
+        <phingcall target="git:commit">
+            <property name="message.for.commit" value="Generate composer.lock files." override="true"/>
+        </phingcall>
+        <write-project-properties targetFile="${dir.build}/properties/dist/project.yml" seedFile="${project.basedir}/seed.yml" />
+        <phingcall target="git:commit">
+            <property name="message.for.commit" value="Added project properties." override="true"/>
+        </phingcall>
+
+        <write-server-properties targetFile="${dir.build}/properties/dist/server.yml" seedFile="${project.basedir}/seed.yml" />
+        <phingcall target="git:commit">
+            <property name="message.for.commit" value="Added server properties." override="true"/>
+        </phingcall>
+
+        <write-jira-properties targetFile="${dir.build}/properties/dist/jira.yml" seedFile="${project.basedir}/seed.yml" />
+        <phingcall target="git:commit">
+            <property name="message.for.commit" value="Added jira properties." override="true"/>
+        </phingcall>
+
+        <generate-site-dirs buildLocation="${dir.build}"
+                            seedFile="${project.basedir}/seed.yml"
+                            templateLocation="${project.basedir}/etc/drupal8"/>
+        <generate-site-config buildLocation="${dir.build}"
+                            seedFile="${project.basedir}/seed.yml"
+                            templateLocation="${project.basedir}/etc/drupal8"/>
+
+        <phingcall target="git:commit">
+            <property name="message.for.commit" value="Added sites dirs." override="true"/>
+        </phingcall>
+
+        <phingcall target="drupal8:baseline-init" />
+        <phingcall target="git:commit">
+            <property name="message.for.commit" value="Added baseline module/theme etc." override="true"/>
+        </phingcall>
+
+        <provision-server-env-file seedFile="${project.basedir}/seed.yml" />
+    </target>
+</project>

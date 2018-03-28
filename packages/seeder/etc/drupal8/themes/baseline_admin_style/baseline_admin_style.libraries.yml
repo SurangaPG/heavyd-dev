@@ -1,0 +1,5 @@
+overwrites:
+  css:
+    component:
+      css/overwrites.css: {}
+      css/icon.css: {}

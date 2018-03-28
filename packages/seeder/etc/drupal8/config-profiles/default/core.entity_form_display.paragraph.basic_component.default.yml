@@ -1,0 +1,35 @@
+uuid: 02b5e36f-25a4-4674-ad94-9d451cb0e7fa
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.basic_component.field_content
+    - field.field.paragraph.basic_component.field_title
+    - paragraphs.paragraphs_type.basic_component
+  module:
+    - text
+id: paragraph.basic_component.default
+targetEntityType: paragraph
+bundle: basic_component
+mode: default
+content:
+  field_content:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

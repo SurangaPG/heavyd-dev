@@ -1,0 +1,24 @@
+uuid: 2878fc3d-7d27-4a89-9545-f03de7428692
+langcode: nl
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - baseline_style
+id: baseline_style_main_menu
+theme: baseline_style
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

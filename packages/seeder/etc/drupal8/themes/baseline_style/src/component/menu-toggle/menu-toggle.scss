@@ -1,0 +1,69 @@
+// Menu toggle
+//
+// Markup: menu-toggle.styleguide.twig
+//
+// Styleguide Component.MenuToggle
+@import "../../_variables/_colors.scss";
+
+.menu-toggle {
+  display: inline-block;
+  width: 28px;
+  height: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+// Compensates the box layout box around the menu toggle item.
+.menu-toggle--wrapper {
+  position: fixed;
+  z-index: 12;
+  top: 2rem;
+  right: 2rem;
+}
+
+.toolbar-vertical .menu-toggle--wrapper {
+  top: 60px;
+}
+
+.menu-toggle span:after,
+.menu-toggle span:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -9px;
+}
+.menu-toggle span:after{
+  top: 9px;
+}
+.menu-toggle span {
+  position: relative;
+  display: block;
+}
+
+.menu-toggle:hover span:after,
+.menu-toggle:hover span:before,
+.menu-toggle:hover span {
+  background: white;
+}
+
+.menu-toggle span,
+.menu-toggle span:after,
+.menu-toggle span:before {
+  width: 100%;
+  height: 5px;
+  background-color: white;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+  border-radius: 2px;
+}
+
+/* on activation */
+.menu-toggle.-active span {
+  background-color: transparent;
+}
+.menu-toggle.-active span:before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.-active span:after {
+  transform: rotate(-45deg) translate(7px, -8px);
+}

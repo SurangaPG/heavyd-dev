@@ -1,0 +1,11 @@
+uuid: 3f48308d-35a3-42c2-97cd-7633e088205f
+langcode: nl
+status: true
+dependencies:
+  config:
+    - node.type.technical_page
+id: node.technical_page
+target_entity_type_id: node
+target_bundle: technical_page
+default_langcode: site_default
+language_alterable: false

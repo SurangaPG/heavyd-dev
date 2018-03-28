@@ -1,0 +1,18 @@
+uuid: 91726d9a-b336-412c-9b40-3d939a27231a
+langcode: nl
+status: true
+dependencies:
+  theme:
+    - baseline_admin_style
+id: baseline_admin_style_local_actions
+theme: baseline_admin_style
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

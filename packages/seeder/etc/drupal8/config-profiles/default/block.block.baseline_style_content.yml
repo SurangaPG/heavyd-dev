@@ -1,0 +1,20 @@
+uuid: 91c7fa1a-05b9-4320-8b1f-95b3f1866dad
+langcode: nl
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - baseline_style
+id: baseline_style_content
+theme: baseline_style
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

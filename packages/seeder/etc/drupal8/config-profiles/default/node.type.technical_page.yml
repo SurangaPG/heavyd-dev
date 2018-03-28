@@ -1,0 +1,17 @@
+uuid: 68d03432-58ed-4510-92b2-7431a1e7fd9c
+langcode: nl
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Technical page'
+type: technical_page
+description: 'Used for pages that should not be deleted or edited by the end user nor appear in the sitemap, search etc. Such as the 403 and 404 page etc. '
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

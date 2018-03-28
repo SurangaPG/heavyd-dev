@@ -1,0 +1,8 @@
+<project name="Seed test tasks" default="help" description="">
+    <property file="build.test.properties.local" />
+    <property file="build.test.properties.dist" />
+
+    <target name="setup:seed-file" description="Sets up a seed file for the test build to use.">
+        <copy file="${dir.fixtures}/seed-d8.yml" tofile="${project.basedir}/seed.yml" />
+    </target>
+</project>

@@ -1,0 +1,49 @@
+/* Main tray item */
+a.toolbar-icon-baseline-tray-tab::before {
+    background-image: url("../assets/svg/bebebe/iconmonstr-tools-9.svg");
+}
+
+a.toolbar-icon-baseline-tray-tab.is-active::before,
+.toolbar-icon-baseline-tray-tab.is-active::before {
+    background-image: url("../assets/svg/ffffff/iconmonstr-tools-9.svg");
+}
+
+/* Terms icon */
+#toolbar-link-baseline-entity-taxonomy_vocabulary-overview_form:before {
+    background-image: url(../assets/svg/787878/fa-list.svg);
+}
+
+#toolbar-link-baseline-entity-taxonomy_vocabulary-overview_form:active:before,
+#toolbar-link-baseline-entity-taxonomy_vocabulary-overview_form.is-active:before {
+    background-image: url(../assets/svg/000000/fa-list.svg);
+}
+
+/* Redirect icon */
+#toolbar-link-view-toolbar_redirects-main:before {
+    background-image: url(../assets/svg/787878/link.svg);
+}
+
+#toolbar-link-view-toolbar_redirects-main:active:before,
+#toolbar-link-view-toolbar_redirects-main.is-active:before {
+    background-image: url(../assets/svg/000000/link.svg);
+}
+
+/* Pages icon */
+#toolbar-link-view-toolbar_pages-main:before {
+    background-image: url(../assets/svg/787878/file.svg);
+}
+
+#toolbar-link-view-toolbar_pages-main:active:before,
+#toolbar-link-view-toolbar_pages-main.is-active:before {
+    background-image: url(../assets/svg/000000/file.svg);
+}
+
+/* Block icon */
+#toolbar-link-view-toolbar_blocks-toolbar:before {
+    background-image: url(../assets/svg/787878/edit.svg);
+}
+
+#toolbar-link-view-toolbar_blocks-toolbar:active:before,
+#toolbar-link-view-toolbar_blocks-toolbar.is-active:before {
+    background-image: url(../assets/svg/000000/edit.svg);
+}

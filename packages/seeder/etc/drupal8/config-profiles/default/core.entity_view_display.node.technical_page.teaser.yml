@@ -1,0 +1,29 @@
+uuid: 8d64ecda-6845-4d11-9b41-5390dd96c058
+langcode: nl
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.technical_page.body
+    - node.type.technical_page
+  module:
+    - text
+    - user
+id: node.technical_page.teaser
+targetEntityType: node
+bundle: technical_page
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true
