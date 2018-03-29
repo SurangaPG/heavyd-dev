@@ -47,6 +47,7 @@ pipelines:
             # subsequent commands (rsync etc).
             - ln -s /opt/atlassian/pipelines/agent/data/id_rsa ~/.ssh/id_rsa
             - composer install
+            - ./vendor/bin/phing document -f build.docs.xml
             - ./vendor/bin/dep deploy-dev docs
           artifacts:
             - packages/**

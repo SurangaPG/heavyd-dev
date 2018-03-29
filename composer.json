@@ -6,7 +6,9 @@
     "phing/phing": "^2.16",
     "phpunit/phpunit": "^7.0",
     "deployer/deployer": "^6.1",
-    "deployer/recipes": "^6.0"
+    "deployer/recipes": "^6.0",
+    "twig/twig": "^2.0",
+    "symfony/filesystem": "^4.0"
   },
   "config": {
     "platform": {

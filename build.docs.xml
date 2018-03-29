@@ -2,19 +2,51 @@
     <property file="build.test.properties.local" />
     <property file="build.test.properties.dist" />
 
+    <includepath classpath="${project.basedir}/lib/phing/src" />
+    <taskdef classname="ExtractPhingDocumentationTask" name="extract-phing-documentation" />
+    <taskdef classname="AggregateDocumentationTask" name="aggregate-documentation" />
+
+    <target name="document">
+        <phingcall target="documentation:prepare-from-source"/>
+        <phingcall target="documentation:seeder-glossary"/>
+        <phingcall target="documentation:aggregate-source"/>
+
+        <!-- Inject all the assets -->
+        <mkdir dir="${project.basedir}/docs/artifact/assets" />
+        <exec passthru="true" command="rsync -vr --delete ${project.basedir}/docs/assets/ ${project.basedir}/docs/artifact/assets/" checkreturn="true" dir="${project.basedir}"/>
+    </target>
+
     <target name="documentation:dev-to-stable" description="Move the current dev version into a stable folder.">
         <fail unless="heavyd.version" message="No version specified. Pass it via -Dheavyd-version"/>
         <!-- @TODO: Temporary implementation. Currently just copy/pastes the source dir into the main dir -->
         <exec passthru="true" command="rsync -vr --delete ${project.basedir}/docs/src/main/dev/ ${project.basedir}/docs/main/versions/v${heavyd.version}/" checkreturn="true" dir="${project.basedir}"/>
     </target>
 
-    <target name="documentation:generate-main" description="Generate the main documentation artifact.">
-        <!-- @TODO: Temporary implementation. Currently just copy/pastes the source dir into the main dir -->
-        <exec passthru="true" command="rsync -vr --delete ${project.basedir}/docs/src/main/ ${project.basedir}/docs/generated/" checkreturn="true" dir="${project.basedir}"/>
+    <target name="documentation:prepare-from-source">
+        <!-- Clean out the generated source -->
+        <delete dir="${project.basedir}/docs/generated" />
+        <mkdir dir="${project.basedir}/docs/generated" />
+
+        <exec passthru="true" command="rsync -vr ${project.basedir}/docs/src/ ${project.basedir}/docs/generated/" checkreturn="true" dir="${project.basedir}"/>
     </target>
 
-    <target name="documentation:generate-dev" description="Generate the main documentation artifact.">
-        <!-- @TODO: Temporary implementation. Currently just copy/pastes the source dir into the main dir -->
-        <exec passthru="true" command="rsync -vr --delete ${project.basedir}/docs/src/dev/ ${project.basedir}/docs/generated/dev/" checkreturn="true" dir="${project.basedir}"/>
+    <target name="documentation:seeder-glossary" description="Generate the glossary for the seeder.">
+        <extract-phing-documentation outputDir="${project.basedir}/docs/generated/dev/seeder/glossary"
+                                     mainTaskFile="${project.basedir}/packages/seeder/build.xml"
+                                     subTaskDir="${project.basedir}/packages/seeder/lib/phing"
+                                     htmlPartialsDir="${project.basedir}/docs/generated/dev/seeder/glossary"
+        />
+    </target>
+
+    <target name="documentation:aggregate-source" description="Aggregates all the data into static html files.">
+
+        <!-- Clean out the aggregation source -->
+        <delete dir="${project.basedir}/docs/artifact" />
+        <mkdir dir="${project.basedir}/docs/artifact" />
+        <aggregate-documentation outputDir="${project.basedir}/docs/artifact"
+                                 sourceDir="${project.basedir}/docs/generated"
+                                 templateDir="${project.basedir}/docs/tpl"
+
+        />
     </target>
 </project>

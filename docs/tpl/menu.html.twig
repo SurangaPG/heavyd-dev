@@ -1,0 +1,13 @@
+<nav class="main-nav">
+  <a class="main-nav__back" href="{{ back.url }}" >{{ back.title }}</a>
+
+  {% if links is not empty %}
+    <ul class="main-nav__links">
+      {% for link in links %}
+        <li class="main-nav__link">
+          <a class="main-nav__item" href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</nav>

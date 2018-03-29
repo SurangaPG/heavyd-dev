@@ -11,7 +11,7 @@ set('ssh_multiplexing', true);
 set('application', 'heavyd_documentation');
 
 // Main rsync source.
-set('rsync_src', __DIR__ . '/docs/generated');
+set('rsync_src', __DIR__ . '/docs/artifact');
 
 // Project repository
 set('repository', 'https://suranga_panagamuwa_gamage@bitbucket.org/webct/heavyd-dev.git');
@@ -44,11 +44,8 @@ task('deploy-dev', [
   'deploy:prepare',
   'deploy:lock',
   'deploy:release',
-  'build:main-docs',
-  'build:dev-docs',
   'rsync',
   'deploy:shared',
-  'versions:update-dev',
   'deploy:writable',
   'deploy:clear_paths',
   'deploy:symlink',
@@ -60,22 +57,6 @@ task('deploy-dev', [
 // [Optional] If deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
-// Build Tasks
-desc('Generate the main docs.');
-task('build:main-docs', function() {
-  runLocally(__DIR__ . '/vendor/bin/phing documentation:generate-main -buildfile build.docs.xml' );
-});
 
-desc('Generate the dev docs.');
-task('build:dev-docs', function() {
-  runLocally(__DIR__ . '/vendor/bin/phing documentation:generate-dev -buildfile build.docs.xml' );
-});
-
-// Deploy Tasks
-desc('Update the dev archive to use the newly generated item.');
-task('versions:update-dev', function() {
-  run('echo {{release_path}}');
-  run('rsync -vr --delete {{release_path}}/dev/ {{release_path}}/versions/dev/');
-});
 
 // @TODO Add a system to move the dev docs to a versioned folder (under /versions/TAG).

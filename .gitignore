@@ -10,3 +10,6 @@ build.test.properties.local
 # Ignore the dirs with documentation that is generated during the build proces.
 /docs/generated
 !/docs/generated/.gitkeep
+
+/docs/artifact
+!/docs/artifact/.gitkeep
